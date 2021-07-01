@@ -28,8 +28,8 @@ function displayPhotos(){
         //Create <a> to link to Unsplash
         const item = document.createElement('a');
         setAttributes(item, {
-            href: photosArray.links.html,
-            target: '_blank'
+            href: photo.links.html,
+            target: '_blank',
         });
         // item.setAttribute('href', photo.links.html);
         // item.setAttribute('target', '_blank');
@@ -38,11 +38,11 @@ function displayPhotos(){
         setAttributes(img, {
             src: photo.urls.regular,
             alt: photo.alt_description,
-            title: photo.alt_description
+            title: photo.alt_description,
         })
-        // img.setAttribute('src', photo.urls.regular);
-        // img.setAttribute('alt', photo.alt_description);
-        // img.setAttribute('title', photo.alt_description)
+        img.setAttribute('src', photo.urls.regular);
+        img.setAttribute('alt', photo.alt_description);
+        img.setAttribute('title', photo.alt_description)
 
         //Append child to parent element item
         item.appendChild(img);
@@ -63,11 +63,15 @@ async function getImages(){
     }
 }
 
-//Function for displaying images
-
-
-
-
 //Run the function
 
 getImages();
+
+
+//Check to see if the bottom of the page is reached, load more photos
+
+window.addEventListener('scroll', ()=>{
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000){
+        getImages();
+    }    
+})
