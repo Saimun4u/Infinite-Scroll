@@ -1,6 +1,6 @@
 //Image Container
 const imageContainer = document.getElementById('image-container');
-const loader = document.getElementById('#loader');
+const loader = document.getElementById('loader');
 let photosArray = [];
 let ready = false;
 let imagesLoaded = 0;
@@ -15,10 +15,11 @@ const apiUrl = `https://api.unsplash.com/photos/random?client_id=${apiKey}&count
 //Load Image function
 function loadImage(){
     imagesLoaded++;
-    console.log(imagesLoaded);
+    // console.log(imagesLoaded);
     if (imagesLoaded === totalImages){
         ready = true;
-        console.log('ready=', ready)
+        loader.hidden = true;
+        // console.log('ready=', ready)
     }
 }
 
@@ -35,7 +36,7 @@ function setAttributes(element, attributes){
 function displayPhotos(){
     imagesLoaded = 0;
     totalImages = photosArray.length;
-    console.log('totalimages=',totalImages)
+    // console.log('totalimages=',totalImages)
     photosArray.forEach((photo) => {
         // console.log(photo)
         // console.log(photo.alt_description);
@@ -56,9 +57,9 @@ function displayPhotos(){
             alt: photo.alt_description,
             title: photo.alt_description,
         })
-        img.setAttribute('src', photo.urls.regular);
-        img.setAttribute('alt', photo.alt_description);
-        img.setAttribute('title', photo.alt_description)
+        // img.setAttribute('src', photo.urls.regular);
+        // img.setAttribute('alt', photo.alt_description);
+        // img.setAttribute('title', photo.alt_description)
 
         //Load image event listener
 
